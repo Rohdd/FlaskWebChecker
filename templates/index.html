@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="refresh" content="60" >
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<style>
+		h4 {font-size:16px;font-weight:800;}
+		.row div {padding-top:20px;padding-bottom:20px;text-align:center;}
+		.gbox {background:#dff0d8;color:#3c763d;}
+		.rbox {background:#f2dede;color:#a94442;}
+	</style>
+</head>
+<body>
+
+	{% set i = 1 %}
+	<div class="container-fluid">
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>Foreversites: 69</h1>
+		</div>
+	</div>
+	
+	<div class="row">
+	{% for v,k in urls.items() %}
+	
+	{% if k == 200 and i%6 != 0 %}
+		<div class="col-sm-2 gbox">
+			<h4>{{ v }}</h4>
+			<strong>Code:</strong> {{ k }}
+		</div>
+	{% set i = i+1 %}
+		
+	{% elif k == 200 and i%6 == 0 %}
+		<div class="col-sm-2 gbox">
+			<h4>{{ v }}</h4>
+			<strong>Code:</strong> {{ k }}
+		</div>
+	</div>
+	<div class="row">
+	{% set i = i+1 %}
+	
+	{% elif k == "Error" and i%6 != 0 %}
+		<div class="col-sm-2 rbox">
+			<h4>{{ v }}</h4>
+			Site doesn't exist
+		</div>
+	{% set i = i+1 %}
+
+	{% elif k == "Error" and i%6 == 0 %}
+		<div class="col-sm-2 rbox">
+			<h4>{{ v }}</h4>
+			Site doesn't exist
+		</div>
+	</div>
+	<div class="row">
+	{% set i = i+1 %}
+		
+	{% elif k != 200 and k != "Error" and i%6 == 0 %}
+		<div class="col-sm-2 rbox">
+			<h4>{{ v }}</h4>
+			<strong>Code:</strong> {{ k }}
+		</div>
+	</div>
+	<div class="row">
+	{% set i = i+1 %}
+
+	{% else %}
+		<div class="col-sm-2 rbox">
+			<h4>{{ v }}</h4>
+			<strong>Code:</strong> {{ k }}
+		</div>
+	{% set i = i+1 %}
+	
+	{% endif %}
+	
+	{% endfor %}
+	
+	</div>
+	</div>
+
+</body>
+</html>
